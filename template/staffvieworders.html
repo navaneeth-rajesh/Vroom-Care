@@ -1,0 +1,134 @@
+{% extends "staffbase.html" %}{% block content %}
+<!-- <br>
+
+<style>
+	th,
+	td {
+		padding: 10px;
+	}
+</style>
+<center>
+	<div style="margin: 50px">
+		<hr />
+        <h2 style="text-align: center; margin-top: 50px"><b>Orders</b></h2><br>
+		<hr />
+		{% if data %}
+		<table border="1" style="margin: 50px; width: 90%" class="table table-center text-center">
+			<tr>
+				<td><b>Customer Name</b></td>
+				<td><b>Part Name</b></td>
+				<td><b>Part Manufactures</b></td>
+				<td><b>Part Image</b></td>
+				<td><b>Quantity</b></td>
+				<td><b>Ordered Date</b></td>
+				<td><b>Amount</b></td>
+				<td><b>Deliverd</b></td>
+			</tr>
+			{% for d in data %}
+			<tr>
+				<td>{{d.ordid.cusid.fk1.first_name}} {{d.ordid.cusid.fk1.last_name}}</td>
+				<td>{{d.stkid.partname}}</td>
+				<td>{{d.stkid.partmanufactures}}</td>
+				<td><img src="/static/media/{{d.stkid.partimage}}" height="100px" width="100px"/></td>
+				<td>{{d.qty}}</td>
+				<td>{{d.ordid.date}}</td>
+				<td>{{d.amt}}</td>
+				<td><a href="/staffdelivredorder?cartid={{d.id}}"><button class="btn btn-success btn-style mt-sm-3 mt-3">Delivered</button></a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		<hr />
+	</div>
+</center> -->
+
+<!-- <center>
+	<div style="margin: 50px">
+		<hr />
+        <h2 style="text-align: center; margin-top: 50px"><b>Delivered Orders</b></h2><br>
+		<hr />
+		{% if beta %}
+		<table border="1" style="margin: 50px; width: 90%" class="table table-center text-center">
+			<tr>
+				<td><b>Customer Name</b></td>
+				<td><b>Part Name</b></td>
+				<td><b>Part Manufactures</b></td>
+				<td><b>Part Image</b></td>
+				<td><b>Quantity</b></td>
+				<td><b>Delivered Date</b></td>
+				<td><b>Amount</b></td>
+			</tr>
+			{% for b in beta %}
+			<tr>
+				<td>{{b.ordid.cusid.fk1.first_name}} {{b.ordid.cusid.fk1.last_name}}</td>
+				<td>{{b.stkid.partname}}</td>
+				<td>{{b.stkid.partmanufactures}}</td>
+				<td><img src="/static/media/{{b.stkid.partimage}}" height="100px" width="100px"/></td>
+				<td>{{b.qty}}</td>
+				<td>{{b.ordid.date}}</td>
+				<td>{{b.amt}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		<hr />
+	</div>
+</center>
+
+
+<br> -->
+<section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b> Orders</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>Customer Name: {{d.ordid.cusid.fk1.first_name}} {{d.ordid.cusid.fk1.last_name}}</span>
+		  <h4> Part Name:{{d.stkid.partname}}  <br>Part Manufactures:{{d.stkid.partmanufactures}} <br> Part Image:{{d.stkid.partname}} <br> Quantity :{{d.qty}} <br><img src="/static/media/{{d.stkid.partimage}}" height="100px" width="100px"/> <br>Ordered Date :{{d.ordid.date}}<br>Amount :{{d.amt}}<br> </h4>
+		  <p><a href="/staffdelivredorder?cartid={{d.id}}"><button class="btn btn-success btn-style mt-sm-3 mt-3">Delivered</button></a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Orders</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+	
+ </section><!-- /Cards Section -->
+  <br>
+<section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Delivered Orders</b></h2>
+	  <div class="row no-gutters">
+		{% if beta %}
+		{% for b in beta %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>Customer Name: {{b.ordid.cusid.fk1.first_name}} {{b.ordid.cusid.fk1.last_name}}</span>
+		  <h4> Part Name:{{b.stkid.partname}}  <br>Part Manufactures:{{b.stkid.partmanufactures}} <br> Part Image:{{b.stkid.partname}} <br> Quantity :{{b.qty}}<br><img src="/static/media/{{b.stkid.partimage}}" height="100px" width="100px"/> <br>Delivered Date :{{b.ordid.date}}<br>Amount :{{b.amt}}<br> </h4>
+		  <!-- <p><a href="/staffdelivredorder?cartid={{d.id}}"><button class="btn btn-success btn-style mt-sm-3 mt-3">Delivered</button></a> -->
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Orders</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+	<!-- <h3>Total :{{total}}</h3>
+	<a href="/cuspay?total={{total}}&noofitems={{noofitems}}"><button class="btn btn-success btn-style mt-sm-3 mt-3">Buy Now</button></a> -->
+
+  </section><!-- /Cards Section -->
+  
+{% endblock %}

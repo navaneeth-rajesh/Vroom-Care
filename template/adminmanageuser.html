@@ -1,0 +1,114 @@
+{% extends "adminbase.html" %}{% block content %}
+<!-- <br>
+<style>
+	.contact-input {
+		padding: 10px;
+		width: 50%;
+		margin-bottom: 10px;
+	}
+</style>
+<h2 style="text-align: center; margin-top: 50px"><b>Add Staff</b></h2><br>
+<form method="post" class="signin-form">
+	{% csrf_token %}
+	<center>
+		<div class="col-sm-12">
+			<input
+				type="text"
+				name="fName"
+				placeholder="Name"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+			<input
+				type="email"
+				name="email"
+				placeholder="Email"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12">
+			<input
+				type="text"
+				name="contact"
+				placeholder="Contact"
+				pattern="[0-9]{10}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12">
+            <select name="district" id="district" class="contact-input">
+                <option value="">District</option>
+                <option value="Kasaragod">Kasaragod</option>
+                <option value="Kannur">Kannur</option>
+                <option value="Kozhikode">Kozhikode</option>
+                <option value="Wayanad">Wayanad</option>
+                <option value="Malappuram">Malappuram</option>
+                <option value="Palakkad">Palakkad</option>
+                <option value="Thrissur">Thrissur</option>
+                <option value="Ernamkulam">Ernamkulam</option>
+                <option value="Idukki">Idukki</option>
+                <option value="Kottayam">Kottayam</option>
+                <option value="Alappuzha">Alappuzha</option>
+                <option value="Kollam">Kollam</option>
+                <option value="pathanamthitta">pathanamthitta</option>
+                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              </select>
+		</div>
+		<div class="col-sm-12">
+			<input
+				type="number"
+				name="pin"
+				placeholder="Pincode"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+			<input
+				type="password"
+				name="password"
+				placeholder="Password"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<button class="btn btn-primary btn-style mt-sm-3 mt-3">Add</button><br>
+	</center>
+</form>-->
+
+ 
+ <section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Users</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.fk1.first_name}}</span>
+		  <h4> {{d.district}} <br>{{d.pin}} <br> {{d.phone}} <br> {{d.fk1.username}}</h4>
+		  <p><a href="/admindeleteuser?sid={{d.fk1.id}}"><button class="btn btn-danger btn-style mt-sm-3 mt-3">Remove</button></a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+
+{% if msg %}
+<script>
+	alert('{{msg}}');
+</script>
+{% endif %}
+
+{% endblock %}

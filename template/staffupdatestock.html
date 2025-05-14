@@ -1,0 +1,142 @@
+{% extends "staffbase.html" %}{% block content %}
+<!-- <br>
+
+<style>
+	.contact-input {
+		padding: 10px;
+		width: 50%;
+		margin-bottom: 10px;
+	}
+</style>
+<h2 style="text-align: center; margin-top: 50px"><b>Update Stock</b></h2><br>
+<form method="post" class="signin-form" enctype="multipart/form-data">
+	{% csrf_token %}
+	<center>
+		<div class="col-sm-12">
+            <label>Part Name</label><br>
+			<input
+				type="text"
+				name="partname"
+                value="{{data.partname}}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+            <label>Part Manufactures</label><br>
+			<input
+				type="text"
+				name="partmanufactures"
+                value="{{data.partmanufactures}}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12">
+            <label>Price</label><br>
+			<input
+				type="number"
+				name="partprice"
+                value="{{data.partprice}}"
+				pattern="[0-9]{10}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		
+		<div class="col-sm-12">
+            <label>No Of Stock</label><br>
+			<input
+				type="number"
+				name="partcount"
+                value="{{data.partcount}}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+            <label>Warranty In Months</label><br>
+			<input
+				type="text"
+				name="partwarranty"
+                value="{{data.partwarranty}}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<button class="btn btn-primary btn-style mt-sm-3 mt-3">Update</button><br>
+	</center>
+</form>
+
+<br> -->
+<section id="contact" class="contact section"> 
+
+	<!-- Section Title -->
+	<div class="container section-title" data-aos="fade-up">
+	  <h2 class="text-uppercase " style="color: rgb(5, 74, 83);"><b>Update Stock</b> </h2>
+	</div><!-- End Section Title -->
+
+	<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+	  <div class="row gy-4">
+
+		<div class="col-lg-2">
+		</div>
+
+		<div class="col-lg-8">
+		  <form  method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="row gy-4">
+
+			  <div class="col-md-6">
+				<label for="name-field" class="pb-2"> Part Name</label>
+				<input type="text" name="partname" id="name-field" value="{{data.partname}}" class="form-control" required="">
+			</div>
+			<div class="col-md-6">
+				<label for="name-field" class="pb-2">Part Manufactures</label>
+				<input type="text"  id="name-field"name="partmanufactures"
+				value="{{data.partmanufactures}}" class="form-control" required="">
+			 </div>
+
+			<div class="col-md-12">
+				<label for="email-field" class="pb-2">Price  </label>
+				<input type="number" class="form-control" id="email-field" name="partprice"
+				value="{{data.partprice}}"
+				pattern="[0-9]{10}" required="">
+			</div>
+			<div class="col-md-12">
+				<label for="phone" class="pb-2">No Of Stock</label>
+				<input type="number" id="phone" class="form-control" name="partcount"
+				value="{{data.partcount}}" required>
+			</div>
+			<div class="col-md-12">
+				<label for="pin" class="pb-2">Warranty In Months</label>
+				<input type="text" class="form-control" name="partwarranty" id="pin" value="{{data.partwarranty}}"
+				 required>
+			</div>
+		    <!-- <div class="col-md-12">
+				<label for="house" class="pb-2">Image Of The Product</label>
+				<input type="file" class="form-control" name="partimage" id="house" placeholder="Image Of The Product" required>
+			</div> -->
+			  
+				
+
+			  <div class="col-md-12 text-center">
+				<div class="loading">Loading</div>
+				<div class="error-message"></div>
+				<div class="sent-message">Your message has been sent. Thank you!</div>
+
+				<button type="submit">UPDATE</button>
+			  </div>
+
+			</div>
+		  </form>
+		</div><!-- End Contact Form -->
+
+	  </div>
+
+	</div>
+
+  </section>
+
+{% endblock %}

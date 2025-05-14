@@ -1,0 +1,60 @@
+{% extends "cusbase.html" %}{% block content %}
+
+
+ 
+ <section id="cards" class="cards section light-background">
+	 <div class="container">
+		 <h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b> Mechanics</b></h2>
+		 <div class="row no-gutters justify-content-center">
+		<button id="fetchNearby" class="btn btn-outline-primary btn-sm" style="width: 150px;">Sort Nearby</button>
+		<script>
+			document.getElementById('fetchNearby').addEventListener('click', function() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						const latitude = position.coords.latitude;
+						const longitude = position.coords.longitude;
+						window.location.href = `\\cusviewmechanics?lat=${latitude}&lon=${longitude}`;
+					});
+				} else {
+					alert('Geolocation is not supported by this browser.');
+				}
+			});
+		</script>
+		</div>
+		<div class="row no-gutters justify-content-center">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.fk3.first_name}}</span>
+		  <h4> {{d.district}} <br>{{d.pin}} <br> {{d.phone}} <br> {{d.fk3.username}}</h4>
+		  <p>
+            <form action="\cusbookmechanic" method="get">
+                {% csrf_token %}
+                <input type="hidden" name="mid" value="{{d.id}}" >
+                <input type="date" name="booking_date" id="booking_date" required>
+                <script>
+                    document.getElementById('booking_date').min = new Date().toISOString().split('T')[0];
+                </script>
+                <br>
+            <button type="submit" class="btn btn-danger btn-style mt-sm-3 mt-3">Book</button>
+            </form>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+
+{% if msg %}
+<script>
+	alert('{{msg}}');
+</script>
+{% endif %}
+
+{% endblock %}

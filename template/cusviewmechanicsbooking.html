@@ -1,0 +1,36 @@
+{% extends "cusbase.html" %}{% block content %}
+
+
+ 
+ <section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b> Mechanics Bookings</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.mid.fk3.first_name}}</span>
+		  <h4> {{d.date}} <br><br>{{d.status}} <br> </h4>
+		  <p>
+            <a href="\customer_chat_with_mechanic?mid={{d.mid.fk3.id}}" class="btn btn-warning">Chat</a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+
+{% if msg %}
+<script>
+	alert('{{msg}}');
+</script>
+{% endif %}
+
+{% endblock %}

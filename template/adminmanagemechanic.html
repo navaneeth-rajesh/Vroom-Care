@@ -1,0 +1,57 @@
+{% extends "adminbase.html" %}{% block content %}
+
+ 
+ <section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b> Mechanics</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.fk3.first_name}}</span>
+		  <h4> {{d.district}} <br>{{d.pin}} <br> {{d.phone}} <br> {{d.fk3.username}}</h4>
+		  <p><a href="/admindeletemechanic?sid={{d.fk3.id}}"><button class="btn btn-danger btn-style mt-sm-3 mt-3">Remove</button></a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+
+ <section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Removed Mechanics</b></h2>
+	  <div class="row no-gutters">
+		{% if alpha %}
+		{% for a in alpha %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{a.fk3.first_name}}</span>
+		  <h4> {{a.district}} <br>{{a.pin}} <br> {{a.phone}} <br> {{a.fk3.username}}</h4>
+		  <!-- <p><a href="/admindeletestaff?sid={{d.fk3.id}}"><button class="btn btn-warning btn-style mt-sm-3 mt-3">Remove</button></a> -->
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+{% if msg %}
+<script>
+	alert('{{msg}}');
+</script>
+{% endif %}
+
+{% endblock %}

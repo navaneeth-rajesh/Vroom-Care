@@ -1,0 +1,28 @@
+{% extends "cusbase.html" %}{% block content %}
+
+
+
+<section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>products</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.fk2.first_name}}</span>
+		  <h4> {{d.partmanufactures}} <br>{{d.partwarranty}} Months Warrenty <br> ₹{{d.partprice}} <br> <img src="/static/media/{{d.partimage}} " width="150px" height="200px" alt=""></h4>
+		  <p><a href="/cusviewproddetails?stkid={{d.id}}"><button class="btn btn-warning btn-style mt-sm-3 mt-3">view</button></a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+{% endblock %}

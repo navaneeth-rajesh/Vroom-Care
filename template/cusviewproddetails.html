@@ -1,0 +1,114 @@
+{% extends "cusbase.html" %}{% block content %}
+
+
+<!-- <style>
+    th,td{
+        padding: 20px;
+    }
+    </style>
+    
+    <center>
+    <div style="margin: 50px;">
+        <hr><h1>Product details</h1><hr>
+        <form method="post">
+            {% csrf_token %}
+        <table style="margin: 10px; width: 650px;">
+                <tr>
+                    <td>
+                        <br><br>
+                       <h3> Rs.{{data.partprice}}/-</h3>
+                    </td>
+                    <td>
+                        <h1>{{data.partname}}</h1>
+                        <p>From {{data.partmanufactures}}</p>
+                        <p>Stock Available is {{data.partcount}}</p><br>
+                        <input type="number" class="btn btn-danger" name="qty" value="1" min="1" max="{{data.partcount}}" title="Stock Available is {{data.partcount}}"></a>
+                        <input type="submit" class="btn btn-danger" name="cart" value="ADD TO CART"></a>
+                    </td>
+                </tr>
+        </table>
+        <input type="submit" class="btn btn-danger" name="review" value="Write a review"></a>
+    
+    </form>
+    <br><hr> -->
+    <section id="cards" class="cards section light-background">
+
+        <div class="container">
+        <h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Product details</b></h2>
+          <div class="row no-gutters">
+            
+            <!-- <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100"> -->
+                <form method="post">
+                    {% csrf_token %}
+                <table style="margin: 10px; width: 650px;">
+                        <tr>
+                            <td>
+                                <br><br>
+                               <h3> Rs.{{data.partprice}}/-</h3>
+                            </td>
+                            <td>
+                                <h1>{{data.partname}}</h1>
+                                <p>From {{data.partmanufactures}}</p>
+                                <p>Stock Available is {{data.partcount}}</p><br>
+                                <input type="number" class="btn btn-danger" name="qty" value="1" min="1" max="{{data.partcount}}" title="Stock Available is {{data.partcount}}"></a>
+                                <input type="submit" class="btn btn-danger" name="cart" value="ADD TO CART"></a>
+                            </td>
+                        </tr>
+                </table>
+                <!-- <a class="btn btn-danger" name="review" value="" >Write a review</a> -->
+            
+            </form>
+              
+            <!-- </div>End Card Item -->
+          </div>
+    
+        </div>
+    
+      </section>
+   
+    <!-- <h3>Customer reviews</h3><hr>
+    <table align="left" style="margin-left: 50px;">
+        {% for i in feedback %}
+        <tr>
+            <td>{{i.0}} : {{i.1}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    </center> -->
+    <!-- <section id="cards" class="cards section light-background">
+
+        <div class="container">
+        <h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Customer reviews</b></h2>
+          <div class="row no-gutters">
+            {% if feedback %}
+            {% for i in feedback %}
+            <div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+              <h4> {{i.0}} : {{i.1}}</h4>
+              </p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h3 style="text-align: center; margin-top: 50px">No Reviews</h3>
+            {% endif %}
+            
+          </div>
+    
+        </div>
+    
+      </section> -->
+      
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script>
+        
+        
+        var msg="{{msg}}";
+        if(msg!="")
+        {
+            alert(msg);
+                }
+    </script>
+
+
+{% endblock %}

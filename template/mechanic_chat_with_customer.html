@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Chat Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e1e1e, #2c2c2c, #3a3a3a);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 400px;
+            height: 600px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: #252525;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #333;
+            color: white;
+        }
+        .back-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: white;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-message {
+            max-width: 80%;
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        .chat-message span {
+            font-size: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 1px;
+            display: block;
+            text-align: right;
+        }
+        .sent {
+            align-self: flex-end;
+            background: #ff6f61;
+            color: white;
+        }
+        .received {
+            align-self: flex-start;
+            background: #6a89cc;
+            color: white;
+        }
+        .chat-footer {
+            display: flex;
+            padding: 10px;
+            background: #333;
+        }
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            background: #444;
+            color: white;
+        }
+        .chat-footer button {
+            background: #ff6f61;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-footer button:hover {
+            background: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <a href="\mechanicviewbookings" class="back-button" >←</a>
+            <span>Chat Interface</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            {% for i in data %}
+            <div class="chat-message {% if i.sender.id == customer.id %} received {% else %} sent {% endif %}">{{i.message}} <br><span>{{i.date}}</span></div>
+
+            {% endfor %}
+        </div>
+        <form method="post" class="chat-footer">
+            {% csrf_token %}
+            <input type="text" id="chatInput" placeholder="Type a message..." name="message">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>

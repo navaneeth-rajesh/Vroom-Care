@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+{% block content %}
+<section id="contact" class="contact section">
+
+	<!-- Section Title -->
+	<div class="container section-title" data-aos="fade-up">
+	  <h2 class="text-uppercase">login</h2>
+	</div><!-- End Section Title -->
+
+	<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+	  <div class="row gy-4">
+
+		<div class="col-lg-3">
+		</div>
+
+		<div class="col-lg-6">
+		  <form  method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+			{% csrf_token %}
+			<div class="row gy-4">
+
+			  <div class="col-md-12">
+				<label for="name-field" class="pb-2">Username</label>
+				<input type="text" name="uname" id="name-field" placeholder=" Your Name" class="form-control" required="">
+			  </div>
+			<div class="col-md-12">
+				<label for="password" class="pb-2">Password</label>
+				<input type="password" class="form-control" name="password" id="password" placeholder="password"
+				required="">
+				
+			</div> 
+			  <div class="col-md-12 text-center">
+				<div class="loading">Loading</div>
+				<div class="error-message"></div>
+				<div class="sent-message">Your message has been sent. Thank you!</div>
+
+				<button type="submit">Login</button>
+			  </div>
+
+			</div>
+		  </form>
+		</div><!-- End Contact Form -->
+
+	  </div>
+
+	</div>
+
+  </section>
+  {% if messages %}
+  {% for msg in messages %}
+  <script>alert("{{msg}}")</script>
+  {% endfor %}
+  {% endif %}
+{%endblock%}

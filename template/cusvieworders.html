@@ -1,0 +1,72 @@
+{% extends "cusbase.html" %}{% block content %}
+<!-- <br>
+
+<style>
+	th,
+	td {
+		padding: 10px;
+	}
+</style>
+<center>
+	<div style="margin: 50px">
+		<hr/>
+        <h2 style="text-align: center; margin-top: 50px"><b>Order Status</b></h2><br>   
+		<hr/>
+		{% if data %}
+		<table border="1" style="margin: 50px; width: 90%" class="table table-center text-center">
+			<tr>
+				<td><b>Item Name</b></td>
+				<td><b>Item Manufactures</b></td>
+				<td><b>Item Qty</b></td>
+				<td><b>Amount</b></td>
+				<td><b>Item Warranty    </b></td>
+				<td><b>Item Image</b></td>
+				<td><b>Ordered / Delivered Date</b></td>
+				<td><b>Status</b></td>
+			</tr>
+			{% for d in data %}
+			<tr>
+				<td>{{d.stkid.partname}}</td>
+				<td>{{d.stkid.partmanufactures}}</td>
+                <td>{{d.qty}}</td>
+				<td>{{d.amt}}</td>
+				<td>{{d.stkid.partwarranty}} Months</td>
+				<td><img src="/static/media/{{d.stkid.partimage}}" height="100px" width="100px"/></td>
+				<td>{{d.ordid.date}}</td>
+				<td>{{d.ordid.status}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		<hr />
+	</div>
+</center>
+
+<br> -->
+<section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Order Status</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <span>{{d.stkid.partname}}</span>
+		  <h4> {{d.stkid.partmanufactures}} <br>{{d.qty}} <br> {{d.amt}} <br> {{d.stkid.partwarranty}} Months <br></h4>
+		  <p>{{d.ordid.date}} <br>{{d.ordid.status}} </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Items</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+	<!-- <h3>Total :{{total}}</h3>
+	<a href="/cuspay?total={{total}}&noofitems={{noofitems}}"><button class="btn btn-success btn-style mt-sm-3 mt-3">Buy Now</button></a>
+ -->
+  </section><!-- /Cards Section -->
+{% endblock %}

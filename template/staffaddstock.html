@@ -1,0 +1,215 @@
+{% extends "staffbase.html" %}{% block content %}
+<!-- <br>
+
+<style>
+	.contact-input {
+		padding: 10px;
+		width: 50%;
+		margin-bottom: 10px;
+	}
+</style>
+<h2 style="text-align: center; margin-top: 50px"><b>Add Stock</b></h2><br>
+<form method="post" class="signin-form" enctype="multipart/form-data">
+	{% csrf_token %}
+	<center>
+		<div class="col-sm-12">
+			<input
+				type="text"
+				name="partname"
+				placeholder="Part Name"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+			<input
+				type="text"
+				name="partmanufactures"
+				placeholder="Part Manufactures"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12">
+			<input
+				type="number"
+				name="partprice"
+				placeholder="Price"
+				pattern="[0-9]{10}"
+				class="contact-input"
+				required
+			/>
+		</div>
+		
+		<div class="col-sm-12">
+			<input
+				type="number"
+				name="partcount"
+				placeholder="No Of Stock"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<div class="col-sm-12 mt-sm-0 mt-4">
+			<input
+				type="text"
+				name="partwarranty"
+				placeholder="Warranty In Months"
+				class="contact-input"
+				required
+			/>
+		</div>
+        <div class="col-sm-12 mt-sm-0 mt-4">
+            <label>Image Of The Product</label><br>
+			<input
+				type="file"
+				name="partimage"
+				placeholder="Image Of The Product"
+				class="contact-input"
+				required
+			/>
+		</div>
+		<button class="btn btn-primary btn-style mt-sm-3 mt-3">Add To Stock</button><br>
+	</center>
+</form>
+
+<style>
+	th,
+	td {
+		padding: 10px;
+	}
+</style>
+<center>
+	<div style="margin: 50px">
+		<hr />
+        <h2 style="text-align: center; margin-top: 50px"><b>Added Stock</b></h2><br>
+		<hr />
+		{% if data %}
+		<table border="1" style="margin: 50px; width: 90%" class="table table-center text-center">
+			<tr>
+				<td><b>Part Name</b></td>
+				<td><b>Part Manufactures</b></td>
+				<td><b>Price</b></td>
+				<td><b>No Of Stock</b></td>
+				<td><b>Warranty In Months</b></td>
+				<td><b>Part Image</b></td>
+				<td><b>Date Updated</b></td>
+				<td><b>Update</b></td>
+			</tr>
+			{% for d in data %}
+			<tr>
+				<td>{{d.partname}}</td>
+				<td>{{d.partmanufactures}}</td>
+				<td>{{d.partprice}}</td>
+				<td>{{d.partcount}}</td>
+				<td>{{d.partwarranty}} Months</td>
+				<td><img src="/static/media/{{d.partimage}}" height="100px" width="100px"/></td>
+				<td>{{d.date}}</td>
+				<td><a href="/staffupdatestock?stkid={{d.id}}"><button class="btn btn-danger btn-style mt-sm-3 mt-3">Update</button></a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		<hr />
+	</div>
+</center> -->
+
+
+<section id="contact" class="contact section"> 
+
+	<!-- Section Title -->
+	<div class="container section-title" data-aos="fade-up">
+	  <h2 class="text-uppercase " style="color: rgb(5, 74, 83);"><b>Add Stock</b> </h2>
+	</div><!-- End Section Title -->
+
+	<div class="container" data-aos="fade-up" data-aos-delay="100">
+
+	  <div class="row gy-4">
+
+		<div class="col-lg-2">
+		</div>
+
+		<div class="col-lg-8">
+		  <form  method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="row gy-4">
+
+			  <div class="col-md-6">
+				<label for="name-field" class="pb-2"> Part Name</label>
+				<input type="text" name="partname" id="name-field" placeholder="Part Name" class="form-control" required="">
+			</div>
+			<div class="col-md-6">
+				<label for="name-field" class="pb-2">Part Manufactures</label>
+				<input type="text"  id="name-field"name="partmanufactures"
+				placeholder="Part Manufactures" class="form-control" required="">
+			 </div>
+
+			<div class="col-md-12">
+				<label for="email-field" class="pb-2">Price  </label>
+				<input type="number" class="form-control" id="email-field" name="partprice"
+				placeholder="Price"
+				pattern="[0-9]{10}" required="">
+			</div>
+			<div class="col-md-12">
+				<label for="phone" class="pb-2">No Of Stock</label>
+				<input type="number" id="phone" class="form-control" name="partcount"
+				placeholder="No Of Stock" required>
+			</div>
+			<div class="col-md-12">
+				<label for="pin" class="pb-2">Warranty In Months</label>
+				<input type="text" class="form-control" name="partwarranty" id="pin" placeholder="Warranty In Months"
+				 required>
+			</div>
+		    <div class="col-md-12">
+				<label for="house" class="pb-2">Image Of The Product</label>
+				<input type="file" class="form-control" name="partimage" id="house" placeholder="Image Of The Product" required>
+			</div>
+			  
+				
+
+			  <div class="col-md-12 text-center">
+				<div class="loading">Loading</div>
+				<div class="error-message"></div>
+				<div class="sent-message">Your message has been sent. Thank you!</div>
+
+				<button type="submit">ADD</button>
+			  </div>
+
+			</div>
+		  </form>
+		</div><!-- End Contact Form -->
+
+	  </div>
+
+	</div>
+
+  </section>
+
+
+ 
+ <section id="cards" class="cards section light-background">
+
+	<div class="container">
+		<h2 class="text-uppercase" style="color: rgb(5, 74, 83);"><b>Added Stock</b></h2>
+	  <div class="row no-gutters">
+		{% if data %}
+		{% for d in data %}
+		<div class="col-lg-4 col-md-6 card" data-aos="fade-up" data-aos-delay="100">
+		  <!-- <span>{{d.fk2.first_name}}</span> -->
+		  <h4> Part Name:{{d.partname}} <br>Part Manufactures:{{d.partmanufactures}} <br>Price:{{d.partprice}} <br>No Of Stock:{{d.partcount}} <br>Warranty In Months:{{d.partwarranty}} Months <br><img src="/static/media/{{d.partimage}}" height="100px" width="100px"/> <br>Date Updated : {{d.date}} <br> </h4>
+		  <p><a href="/staffupdatestock?stkid={{d.id}}"><button class="btn btn-danger btn-style mt-sm-3 mt-3">Update</button></a>
+		  </p>
+		</div><!-- End Card Item -->
+		{% endfor %}
+		{% else %}
+		<h3 style="text-align: center; margin-top: 50px">No Records</h3>
+		{% endif %}
+		
+	  </div>
+
+	</div>
+
+  </section><!-- /Cards Section -->
+{% endblock %}

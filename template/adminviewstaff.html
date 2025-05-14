@@ -1,0 +1,49 @@
+{% extends "adminbase.html" %}{% block content %}
+
+<style>
+	th,
+	td {
+		padding: 10px;
+	}
+</style>
+<center>
+	<div style="margin: 50px">
+		<hr />
+		<h3>Staffs</h3>
+		<hr />
+		{% if data %}
+		<table border="1" style="margin: 50px; width: 90%">
+			<tr>
+				<th>First Name</th>
+				<th>District</th>
+				<th>Pincode</th>
+				<th>Contact</th>
+				<th>Email</th>
+			</tr>
+			{% for d in data %}
+			<tr>
+				<td>{{d.fk2.first_name}}</td>
+				<td>{{d.district}}</td>
+				<td>{{d.pin}}</td>
+				<td>{{d.phone}}</td>
+				<td>{{d.fk2.username}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		{% else %}
+		<h3>No Records</h3>
+		{% endif %}
+		<hr />
+	</div>
+</center>
+
+<script>
+	var msg = '{{msg}}';
+	if (msg != '') {
+		alert(msg);
+		// location.href="/adminproduct";
+	}
+</script>
+
+
+{% endblock %}
